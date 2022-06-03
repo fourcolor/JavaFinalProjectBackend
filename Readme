@@ -1,0 +1,17 @@
+# JavaFinalProjectBackend
+## Require
+* Java 17
+* maven
+## Useage
+* How to start
+```
+$ ./mvnw spring-boot:run
+```
+* How to stop
+```
+$ ^C
+```
+or
+```
+$ ./mvnw spring-boot:stop
+```

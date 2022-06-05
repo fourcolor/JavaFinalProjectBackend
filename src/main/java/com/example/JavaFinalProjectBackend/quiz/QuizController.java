@@ -152,7 +152,7 @@ public class QuizController {
     @PostMapping("quiz/finish")
     public String finish(@RequestBody HashMap<String, String> req) {
         try {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
             Date date = new Date(System.currentTimeMillis());
             byte[] imageByte;
             imageByte = Base64.getDecoder().decode(req.get("data"));

@@ -13,7 +13,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+// import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+// import org.springframework.transaction.annotation.Transactional;
 
 @RestController
 public class QuizController {
@@ -21,19 +23,11 @@ public class QuizController {
     JSONParser parser = new JSONParser();
 
     @GetMapping("quiz/getAll")
-    public JSONArray getAll(@RequestParam("date") String date) {
+    public JSONArray getAll() {
         JSONArray arr = null;
-        JSONArray ResArr = new JSONArray();
         try {
             arr = (JSONArray) parser.parse(new FileReader("src/static/info.json"));
-            System.out.println(arr.size());
-            for (Object ob : arr) {
-                JSONObject job = (JSONObject) ob;
-                if (job.get("startAt").equals(date)) {
-                    ResArr.add(ob);
-                }
-            }
-            return ResArr;
+            return arr;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -41,7 +35,7 @@ public class QuizController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return ResArr;
+        return arr;
     }
 
     @GetMapping("quiz/get")
